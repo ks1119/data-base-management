@@ -1,0 +1,242 @@
+1)SQL> select * from instructor i,course c where i.dept_name=c.dept_name;
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+76766 Crick                Biology                   72000 BIO-101  Intro. to Biology
+Biology                       4
+
+76766 Crick                Biology                   72000 BIO-301  Genetics
+Biology                       4
+
+76766 Crick                Biology                   72000 BIO-399  Computational Biology
+Biology                       3
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000 CS-101   Intro. to Computer Science
+Comp. Sci.                    4
+
+45565 Katz                 Comp. Sci.                75000 CS-101   Intro. to Computer Science
+Comp. Sci.                    4
+
+83821 Brandt               Comp. Sci.                92000 CS-101   Intro. to Computer Science
+Comp. Sci.                    4
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000 CS-190   Game Design
+Comp. Sci.                    4
+
+45565 Katz                 Comp. Sci.                75000 CS-190   Game Design
+Comp. Sci.                    4
+
+83821 Brandt               Comp. Sci.                92000 CS-190   Game Design
+Comp. Sci.                    4
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000 CS-315   Robotics
+Comp. Sci.                    3
+
+45565 Katz                 Comp. Sci.                75000 CS-315   Robotics
+Comp. Sci.                    3
+
+83821 Brandt               Comp. Sci.                92000 CS-315   Robotics
+Comp. Sci.                    3
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000 CS-319   Image Processing
+Comp. Sci.                    3
+
+45565 Katz                 Comp. Sci.                75000 CS-319   Image Processing
+Comp. Sci.                    3
+
+83821 Brandt               Comp. Sci.                92000 CS-319   Image Processing
+Comp. Sci.                    3
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000 CS-347   Database System Concepts
+Comp. Sci.                    3
+
+45565 Katz                 Comp. Sci.                75000 CS-347   Database System Concepts
+Comp. Sci.                    3
+
+83821 Brandt               Comp. Sci.                92000 CS-347   Database System Concepts
+Comp. Sci.                    3
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+98345 Kim                  Elec. Eng.                80000 EE-181   Intro. to Digital Systems
+Elec. Eng.                    3
+
+12121 Wu                   Finance                   90000 FIN-201  Investment Banking
+Finance                       3
+
+76543 Singh                Finance                   80000 FIN-201  Investment Banking
+Finance                       3
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+32343 El Said              History                   60000 HIS-351  World History
+History                       3
+
+58583 Califieri            History                   62000 HIS-351  World History
+History                       3
+
+15151 Mozart               Music                     40000 MU-199   Music Video Production
+Music                         3
+
+
+ID    NAME                 DEPT_NAME                SALARY COURSE_I TITLE
+----- -------------------- -------------------- ---------- -------- --------------------------------------------------
+DEPT_NAME               CREDITS
+-------------------- ----------
+22222 Einstein             Physics                   95000 PHY-101  Physical Principles
+Physics                       4
+
+33456 Gold                 Physics                   87000 PHY-101  Physical Principles
+Physics                       4
+
+
+26 rows selected.
+2)SQL> select i.name,i.dept_name,d.building from  instructor i,department d where i.dept_name=d.dept_name;
+
+NAME                 DEPT_NAME            BUILDING
+-------------------- -------------------- ---------------
+Srinivasan           Comp. Sci.           Taylor
+Wu                   Finance              Painter
+Mozart               Music                Packard
+Einstein             Physics              Watson
+El Said              History              Painter
+Gold                 Physics              Watson
+Katz                 Comp. Sci.           Taylor
+Califieri            History              Painter
+Singh                Finance              Painter
+Crick                Biology              Watson
+Brandt               Comp. Sci.           Taylor
+
+NAME                 DEPT_NAME            BUILDING
+-------------------- -------------------- ---------------
+Kim                  Elec. Eng.           Taylor
+
+12 rows selected.
+3)SQL> select distinct name from instructor i,teaches t where i.id=t.id;
+
+NAME
+--------------------
+Brandt
+Crick
+Einstein
+El Said
+Katz
+Kim
+Mozart
+Srinivasan
+Wu
+
+9 rows selected.
+4)SQL> select t.course_id,c.title from takes t, course c where t.course_id=c.course_id and t.id='12345';
+
+COURSE_I TITLE
+-------- --------------------------------------------------
+CS-101   Intro. to Computer Science
+CS-190   Game Design
+CS-315   Robotics
+CS-347   Database System Concepts
+5)
+
+SQL> select i.name,t.course_id from instructor i,teaches t where i.dept_name='Comp. Sci.' and i.id=t.id;
+
+NAME                 COURSE_I
+-------------------- --------
+Srinivasan           CS-101
+Srinivasan           CS-315
+Srinivasan           CS-347
+Katz                 CS-101
+Katz                 CS-319
+Brandt               CS-190
+Brandt               CS-190
+Brandt               CS-319
+
+8 rows selected.
+6)SQL>  select i.name, t.course_id from instructor i,teaches t where i.id=t.id;
+
+NAME                 COURSE_I
+-------------------- --------
+Srinivasan           CS-101
+Srinivasan           CS-315
+Srinivasan           CS-347
+Wu                   FIN-201
+Mozart               MU-199
+Einstein             PHY-101
+El Said              HIS-351
+Katz                 CS-101
+Katz                 CS-319
+Crick                BIO-101
+Crick                BIO-301
+
+NAME                 COURSE_I
+-------------------- --------
+Brandt               CS-190
+Brandt               CS-190
+Brandt               CS-319
+Kim                  EE-181
+
+15 rows selected.
+7)
+
+SQL> select i1.name from instructor i1,instructor i2 where i1.salary>i2.salary and lower(i2.dept_name)='biology';
+
+NAME
+--------------------
+Wu
+Einstein
+Gold
+Katz
+Singh
+Brandt
+Kim
+
+7 rows selected.
+8)
+
+SQL> select distinct i.* from instructor i,teaches t where i.id=t.id;
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000
+12121 Wu                   Finance                   90000
+15151 Mozart               Music                     40000
+22222 Einstein             Physics                   95000
+32343 El Said              History                   60000
+45565 Katz                 Comp. Sci.                75000
+76766 Crick                Biology                   72000
+83821 Brandt               Comp. Sci.                92000
+98345 Kim                  Elec. Eng.                80000
+
+9 rows selected.
