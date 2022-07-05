@@ -240,3 +240,52 @@ ID    NAME                 DEPT_NAME                SALARY
 98345 Kim                  Elec. Eng.                80000
 
 9 rows selected.
+9) select i.name,t.course_id from instructor i,teaches t where i.dept_name='Biology' and  i.id=t.id;
+NAME                 COURSE_I
+-------------------- --------
+Crick                BIO-101
+Crick                BIO-301
+10) (select course_id
+ from teaches
+ where semester='Spring'and year='2010')
+  UNION
+ (select course_id
+ from teaches
+ where semester='Fall' and year='2009');
+ COURSE_I
+--------
+CS-101
+CS-315
+CS-319
+CS-347
+FIN-201
+HIS-351
+MU-199
+PHY-101
+
+8 rows selected.
+11)  (select course_id
+  from teaches
+  where semester='Fall' and year='2009')
+ minus(select course_id from teaches where semester='Spring' and year='2010');
+ COURSE_I
+--------
+CS-347
+PHY-101
+12) select distinct name from student s,takes t where s.id=t.id and course_id in('CS-101','CS-347','CS-190','CS-315','CS-319');
+NAME
+-------------------
+Bourikas
+Brown
+Levy
+Shankar
+Williams
+Zhang
+
+6 rows selected.
+13) (select id from instructor)minus(select i.id from instructor i,teaches t,course c where i.id=t.id and c.course_id=t.course_id);
+ID
+-----
+33456
+58583
+76543
