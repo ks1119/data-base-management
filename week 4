@@ -1,0 +1,66 @@
+1)SQL> select avg(capacity),max(capacity) from classroom;
+
+AVG(CAPACITY) MAX(CAPACITY)
+------------- -------------
+          132           500
+2)SQL> select min(budget) from department;
+
+MIN(BUDGET)
+-----------
+      50000
+3)      
+    
+SQL> select count(*),sum(credits) from course where dept_name='Biology';
+
+  COUNT(*) SUM(CREDITS)
+---------- ------------
+         3           11
+
+4)SQL> select avg(salary) from instructor where dept_name='Comp. Sci.';
+
+AVG(SALARY)
+-----------
+ 77333.3333  
+ 5)
+SQL> select count(*) from teaches where semester='Spring' and year='2010';
+
+  COUNT(*)
+----------
+         7
+
+6)SQL> select dept_name,avg(salary) from instructor group by dept_name;
+
+DEPT_NAME            AVG(SALARY)
+-------------------- -----------
+Biology                    72000
+Comp. Sci.            77333.3333
+Elec. Eng.                 80000
+Finance                    85000
+History                    61000
+Music                      40000
+Physics                    91000
+
+7 rows selected.
+
+7)SQL> select count(*),dept_name from instructor i,teaches t where i.id=t.id and semester='Spring' and year='2010' group by dept_name;
+
+  COUNT(*) DEPT_NAME
+---------- --------------------
+         4 Comp. Sci.
+         1 Finance
+         1 History
+         1 Music
+
+8)SQL> select dept_name,avg(salary) from instructor having avg(salary) > 42000 group by dept_name;
+
+DEPT_NAME            AVG(SALARY)
+-------------------- -----------
+Biology                    72000
+Comp. Sci.            77333.3333
+Elec. Eng.                 80000
+Finance                    85000
+History                    61000
+Physics                    91000
+
+6 rows selected.
+9)
