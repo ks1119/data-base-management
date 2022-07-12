@@ -63,4 +63,23 @@ History                    61000
 Physics                    91000
 
 6 rows selected.
-9)
+9) select avg(tot_cred) from student,takes where student.ID=takes.ID and sec_id=2 and year=2009 ;
+AVG(TOT_CRED)
+-------------
+           43
+10) select max(salary),dept_name from instructor group by dept_name;
+MAX(SALARY) DEPT_NAME
+----------- --------------------
+      72000 Biology
+      92000 Comp. Sci.
+      80000 Elec. Eng.
+      90000 Finance
+      62000 History
+      40000 Music
+      95000 Physics
+
+7 rows selected.
+11)select sum(credits) from takes,course where takes.course_id=course.course_id and ID=12345 group by dept_name;
+SUM(CREDITS)
+------------
+          14
