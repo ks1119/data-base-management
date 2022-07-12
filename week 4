@@ -83,3 +83,23 @@ MAX(SALARY) DEPT_NAME
 SUM(CREDITS)
 ------------
           14
+12)select id,sum(credits) from takes,course where takes.course_id=course.course_id group by ID;
+ID    SUM(CREDITS)
+----- ------------
+00128            7
+12345           14
+19991            3
+23121            3
+44553            4
+45678           11
+54321            8
+55739            3
+76543            7
+76653            3
+98765            7
+
+ID    SUM(CREDITS)
+----- ------------
+98988            8
+
+12 rows selected.
