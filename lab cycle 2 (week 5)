@@ -1,0 +1,13 @@
+1)SQL> select initcap(dept_name) from department;
+
+INITCAP(DEPT_NAME)
+--------------------
+Biology
+Comp. Sci.
+Elec. Eng.
+Finance
+History
+Music
+Physics
+
+7 rows selected.
