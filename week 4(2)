@@ -1,0 +1,35 @@
+1)SQL> select count(distinct ID) from takes where (course_id,sec_id,semester,year) in (select course_id,sec_id,semester,year from teaches where teaches.ID=110011);
+
+COUNT(DISTINCTID)
+-----------------
+                0
+
+2)SQL> select name from instructor where salary > all(select salary from instructor where dept_name='Biology');
+
+NAME
+--------------------
+Wu
+Einstein
+Gold
+Katz
+Singh
+Brandt
+Kim
+
+7 rows selected.
+3)SQL> select dept_name from instructor group by dept_name having avg(salary) >= all(select avg(salary) from instructor group by dept_name);
+
+DEPT_NAME
+--------------------
+Physics
+4)SQL> select course_id from section where semester='Fall' and year=2009 intersect select course_id from section where semester='Spring' and year=2010;
+
+COURSE_I
+--------
+CS-101
+5)SQL> select course_id from section where semester='Fall' and year=2009 and course_id not in (select course_id from section where semester='Spring' and year=2010);
+
+COURSE_I
+--------
+CS-347
+PHY-101
